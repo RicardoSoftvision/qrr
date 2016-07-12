@@ -23,7 +23,6 @@ Feature: Edit Opportunity
         And click away from the form
         Then <Field> value should be updated to <Entry>
 
-        @Regression
         Examples:
         |  Field               |    Entry    |
         |  opportunity name    |    todo     |
@@ -45,8 +44,3 @@ Feature: Edit Opportunity
         And click save
         Then the field values should be updated
         And the form remains open
-
-
-    Scenario: Add a product - GML/non-GML
-
-    Scenario:
