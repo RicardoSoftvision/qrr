@@ -1,15 +1,18 @@
 # /features/createOpp.feature
 
 Feature: Create Opportunity
+    I as an Account Executive want the ability to create opportunities
+    I want to be able to create an opportunity from Home or Pipeline
+    I also want the ability to cancel opportunity creation
 
     Scenario Outline: The AE clicks the create button
 
-        Given I want to create from the [screen]
+        Given I want to create from the <screen>
         When I click the Create New Opportunity button
-        Then I should be taken to the [destination] screen
+        Then I should be taken to the <destination> screen
         And the create form should be open
 
-        @Regression @Smoke
+        @Regression
         Examples:
         |    screen    |    destination    |
         |    Homepage    |    Visual Pipeline    |
@@ -19,16 +22,15 @@ Feature: Create Opportunity
 
     Scenario Outline: The AE saves the new opportunity
 
-        Given I selected the Account [acct]
-        And I selected the Contact [contact]
-        And I assigned an Opportunity [name]
+        Given I select the Account <acct>
+        And I select the Contact <contact>
+        And I assign an Opportunity <name>
         When I click the save button
         Then the form should close
-        And I should be on the Visual Pipeline Screen
         And the opportunity should exist in the db
 
         # Five examples. Check for "Required" fields covered.
-        @Regression @Smoke
+        @Regression
         Examples:
         |    acct    |    contact    |    name    |
         |    ''    |    todo    |    todo    |
@@ -39,17 +41,18 @@ Feature: Create Opportunity
 
 
     # Strictly the CANCEL buttons functionality
+    # Preliminary check in the step definition for non-blank
+    # fields. Date should wipe on cancel as well
     Scenario Outline: The AE cancels the new opportunity
 
-        Given I selected the Account [acct]
-        And I selected the Contact [contact]
-        And I assigned an Opportunity [name]
+        Given I select the Account <acct>
+        And I select the Contact <contact>
+        And I assign an Opportunity <name>
         When I click the cancel button
         Then the form should close
-        And I should be on the Visual Pipeline Screen
         And the opportunity should not exist in the db
 
-        @Regression @Smoke
+        @Regression
         Examples:
         |    acct    |    contact    |    name    |
         |    todo    |    todo    |    todo    |
@@ -61,7 +64,6 @@ Feature: Create Opportunity
         Given I am on the create form
         When I click the X
         Then the form should close
-        And I should be on the Visual Pipeline
 
 
 
@@ -72,6 +74,7 @@ Feature: Create Opportunity
         Then the Account module should open
         And I should be able to select an account
         And the account should display on the form
+
 
 
     Scenario: The AE selects a Contact
