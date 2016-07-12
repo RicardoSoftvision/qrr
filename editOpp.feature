@@ -1,3 +1,5 @@
+# /features/editOpp.feature
+
 Feature: Edit Opportunity
 
     Scenario Outline: The AE clicks the edit button

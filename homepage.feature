@@ -1,5 +1,10 @@
+# /features/homepage.feature
+
 @Smoke
 Feature: Homepage Smoke Test
+    In order to determine base functionality
+    As part of the testing effort
+    I want a quick homepage smoke test
 
     Background:
         Given I am an Account Executive
