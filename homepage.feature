@@ -4,7 +4,7 @@
 Feature: Homepage Smoke Test
     In order to determine base functionality
     As part of the testing effort
-    I want a quick homepage smoke test
+    I want a quick Homepage smoke test
 
     Background:
         Given I am an Account Executive

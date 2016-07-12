@@ -1,7 +1,10 @@
 # /features/vpipeline.feature
 
 @Smoke
-Feature: My Contacts Smoke Test
+Feature: Visual Pipeline Smoke Test
+    In order to determine base functionality
+    As part of the testing effort
+    I want a quick Visual Pipeline smoke test
 
     Background:
         Given I am an Account Executive
@@ -43,6 +46,6 @@ Feature: My Contacts Smoke Test
 
     Scenario: I as an AE want to move an opportunity to another column
         When I click and hold a tile
-        and drag the tile right
-        and release the tile
+        And drag the tile right
+        And release the tile
         Then I should have updated the tiles location

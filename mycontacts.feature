@@ -2,6 +2,9 @@
 
 @Smoke
 Feature: My Contacts Smoke Test
+    In order to determine base functionality
+    As part of the testing effort
+    I want a quick My Contacts smoke test
 
     Background:
         Given I am an Account Executive
