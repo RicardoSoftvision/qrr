@@ -4,7 +4,6 @@ Feature: Edit Opportunity
     I as an Account Executive want the ability to edit opportunities
     I should be able to cancel the editing process
     I should be able to edit fields inline
-    I should be able to add or delete products
 
 
     Background:

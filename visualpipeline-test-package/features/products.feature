@@ -1,15 +1,19 @@
-# /features/editOpp.feature
+# /features/products.feature
 
-Feature: Edit Opportunity
-    I as an Account Executive want the ability to edit opportunities
-    I should be able to cancel the editing process
-    I should be able to edit fields inline
-    I should be able to add or delete products
+Feature: Opportunity Products
+    I as an Account Executive want the ability associate products
+    with opportunities
+    I should be able to add a product
+    I should be able to delete a product
+    I should be able to edit a product
+    The products should be driven on a dependency heirarchy
 
 
     Background:
         Given I am on the Visual Pipeline
         And I opened an opportunity for edit
+        And I opened the product panel
+        And I clicked the edit product button
 
 
     # One happy path; One sad path
