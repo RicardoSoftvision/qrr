@@ -15,21 +15,18 @@ Feature: Visual Pipeline Smoke Test
     ### Pipeline By Time View
 
     Scenario: I as an AE want to view Pipeline By Time
-        When I navigate to the Visual Pipeline
-        Then I should be viewing Pipeline By Time
-
+        When I view the pipeline by time
+        Then the opportunities should be ordered by time
 
     ### Pipeline By Stage View
 
     Scenario: I as an AE want to view Pipeline By Stage
-        When I click the "Pipeline By Stage" tab
-        Then I should be viewing Pipeline By Stage
-
+        When I view the pipeline by stage
+        Then the opportunities should be ordered by stage
 
     Scenario: I as an AE want to display all Out Of Date opportunities
-        When I click the "Out of Date" button
-        Then the opportunities in view should be out of date
-
+        When I filter to show out of date opportunities
+        Then only out of date opportunities should be in view
 
     ### Independent of View
 
