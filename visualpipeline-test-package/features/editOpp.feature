@@ -70,3 +70,8 @@ Feature: Edit Opportunity
         |  ""               |  ""  |  ""  |  ""  |  ""  |
         |  ""               |  ""  |  ""  |  ""  |  ""  |
         |  ""               |  ""  |  ""  |  ""  |  ""  |
+
+
+    Scenario: I as an AE want to change the affiliated account
+        When I select a new account to associate with the opportunity
+        Then I should see the name of the new account displayed on the tile

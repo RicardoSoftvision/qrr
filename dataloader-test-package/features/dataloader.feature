@@ -9,24 +9,16 @@ Feature: Data Loader
         And selected "DataLoader" in the data loader section
 
 
-    Scenario: I as the Data Admin want to install the Homepage package
-        When I upload the "sidecar-homepage" package
-        Then the package should be accessible in the database
+    Scenario Outline: I as the Data Admin want to install the a screen package
+        When I upload the <Package> package
+        Then the <Package> package should be accessible in the database
 
-
-    Scenario: I as the Data Admin want to install the Homepage package
-        When I upload the "homepage-angular" package
-        Then the package should be accessible in the database
-
-
-    Scenario: I as the Data Admin want to install the Contacts package
-        When I upload the "my-contacts" package
-        Then the package should be accessible in the database
-
-
-    Scenario: I as the Data Admin want to install the Pipeline package
-        When I upload the "pipelines" package
-        Then the package should be accessible in the database
+        Examples:
+            |  Package           |
+            |  sidecar-homepage  |
+            |  homepage-angular  |
+            |  my-contacts       |
+            |  pipelines         |
 
 
     Scenario: I as the Data Admin want to wipe all previous data
