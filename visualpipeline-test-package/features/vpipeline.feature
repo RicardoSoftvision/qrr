@@ -35,15 +35,13 @@ Feature: Visual Pipeline Smoke Test
 
     ## Edit Opportunity Smoke
     Scenario: I as an AE want the option to edit an Opportunity
-        When I open an Opportunities detail view
-        And make an alteration
+        When I edit an opportunity
         Then the opportunity should successfully update
 
     ## Create Opportunity Smoke
     Scenario: I as an AE want the option to create an Opportunity
-        When I click "Create New Opportunity"
-        And create a new opportunity
-        Then the opoportunity should be successfully created
+        When I create a new opportunity
+        Then the opportunity should exist
 
     ## Add a Product Smoke
     Scenario: I as an AE want to add a product to an Opportunity
