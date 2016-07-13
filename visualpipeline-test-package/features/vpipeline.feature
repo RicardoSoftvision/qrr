@@ -43,8 +43,8 @@ Feature: Visual Pipeline Smoke Test
     ## Add a Product Smoke
     Scenario: I as an AE want to add a product to an Opportunity
         When I open an Opportunities detail view
-        And view the Products tab
-        Then I should be able to successfully add a product
+        And I add a product
+        Then the product should successfully be added
 
     Scenario: I as an AE want to soft delete an opportunity
         When I click the "X" button in the tiles top right corner
