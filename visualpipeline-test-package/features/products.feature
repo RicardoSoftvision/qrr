@@ -1,8 +1,7 @@
 # /features/products.feature
 
 Feature: Opportunity Products
-    I as an Account Executive want to associate products
-    with opportunities
+    I as an Account Executive want to associate products with opportunities
     I should be able to add a product
     I should be able to delete a product
     I should be able to edit a product
