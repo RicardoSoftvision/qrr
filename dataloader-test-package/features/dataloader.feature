@@ -5,45 +5,31 @@ Feature: Data Loader
 
     Background:
         Given I am logged in as "admin"
-        When I enter the admin panel
-        And select "DataLoader" in the data loader section
+        And I entered the admin panel
+        And selected "DataLoader" in the data loader section
 
 
     Scenario: I as the Data Admin want to install the Homepage package
-        And click the "Choose File" button
-        And select the "sidecar_homepage" package
-        And click the "Submit" button
-        Then the system should upload the package
-        And the database should have new homepage tables
+        When I upload the "sidecar-homepage" package
+        Then the package should be accessible in the database
 
 
     Scenario: I as the Data Admin want to install the Homepage package
-        And click the "Choose File" button
-        And select the "homepage-angular" package
-        And click the "Submit" button
-        Then the system should upload the package
-        And the database should have new homepage tables
+        When I upload the "homepage-angular" package
+        Then the package should be accessible in the database
 
 
     Scenario: I as the Data Admin want to install the Contacts package
-        And click the "Choose File" button
-        And select the "my-contacts" package
-        And click the "Submit" button
-        Then the system should upload the package
-        And the database should have new contact tables
+        When I upload the "my-contacts" package
+        Then the package should be accessible in the database
 
 
     Scenario: I as the Data Admin want to install the Pipeline package
-        And click the "Choose File" button
-        And select the "pipelines" package
-        And click the "Submit" button
-        Then the system should upload the package
-        And the database should have new contact tables
+        When I upload the "pipelines" package
+        Then the package should be accessible in the database
 
 
     Scenario: I as the Data Admin want to wipe all previous data
-        And click the "Wipe previous data" button
-        Then the system should prompt that data is being wiped
-        And to request confirmation
-        And wipe the previous data
+        When I wipe all previous data
+        Then the data should be removed from the database
 
