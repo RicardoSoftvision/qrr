@@ -22,32 +22,43 @@ Feature: Visual Pipeline Smoke Test
     ### Pipeline By Stage View
 
     Scenario: I as an AE want to view Pipeline By Stage
-        When I click the Pipeline By Stage tab
+        When I click the "Pipeline By Stage" tab
         Then I should be viewing Pipeline By Stage
 
 
     Scenario: I as an AE want to display all Out Of Date opportunities
-        When I click Out of Date
+        When I click the "Out of Date" button
         Then the opportunities in view should be out of date
 
 
     ### Independent of View
 
+    ## Edit Opportunity Smoke
     Scenario: I as an AE want the option to edit an Opportunity
         And opportunities exist
-        When I click edit opportunity
-        Then the edit form should be open
-        And the form should save successfully
+        When I click the Account Name on the Opportunity
+        Then the edit form should open
+        And the edit form should save successfully after alteration
 
-
+    ## Create Opportunity Smoke
     Scenario: I as an AE want the option to create an Opportunity
-        When I click Create New Opportunity
-        Then a form should open
-        And the form should save successfully
+        When I click "Create New Opportunity"
+        Then the create form should open
+        And the create form should save successfully
 
+    ## Add a Product Smoke
+    Scenario: I as an AE want to add a product to an Opportunity
+        And opportunities exist
+        When I click the Account Name on the Opportunity
+        And I click the "Product" tab
+        And I click the edit button
+        And I click the "Add a Product" button
+        And complete the product form
+        And click the "Save" button
+        Then the product should save successfully
 
     Scenario: I as an AE want to soft delete an opportunity
-        When I click the X
+        When I click the "X" button in the tiles top right corner
         Then the tile should be removed from view
 
 
