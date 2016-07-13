@@ -5,83 +5,63 @@ Feature: Create Opportunity
     I want to be able to create an opportunity from Home or Pipeline
     I also want the ability to cancel opportunity creation
 
-    Scenario Outline: The AE clicks the create button
 
-        Given I want to create from the <screen>
-        When I click the Create New Opportunity button
-        Then I should be taken to the <destination> screen
-        And the create form should be open
+    Background:
+        Given I am logged in as an AE
+        And I am on the Visual Pipeline screen
+        And I am creating an opportunity
 
-        @Regression
-        Examples:
-        |    screen    |    destination    |
-        |    Homepage    |    Visual Pipeline    |
-        |    Visual Pipeline    |    Visual Pipeline    |
-
-
-
-    Scenario Outline: The AE saves the new opportunity
-
-        Given I select the Account <acct>
-        And I select the Contact <contact>
-        And I assign an Opportunity <name>
-        When I click the save button
-        Then the form should close
-        And the opportunity should exist in the db
+    Scenario Outline: AE creates an opportunity
+        When I supply account=<acct>, contact=<contact>, name=<name>
+        Then I should have created an opportunity with name=<name>, account=<acct>, contact=<contact>
+        And the opportunity is present in the db
 
         # Five examples. Check for "Required" fields covered.
         @Regression
         Examples:
-        |    acct    |    contact    |    name    |
-        |    ''    |    todo    |    todo    |
-        |    todo    |    ''    |    todo    |
-        |    todo    |    todo    |    ''    |
-        |    ''    |    ''    |    ''    |
-        |    todo    |    todo    |    todo    |
+        |  acct  |  contact |  name  |
+        |  ''    |  todo    |  todo  |
+        |  todo  |  ''      |  todo  |
+        |  todo  |  todo    |  ''    |
+        |  ''    |  ''      |  ''    |
+        |  todo  |  todo    |  todo  |
 
 
     # Strictly the CANCEL buttons functionality
     # Preliminary check in the step definition for non-blank
     # fields. Date should wipe on cancel as well
-    Scenario Outline: The AE cancels the new opportunity
-
-        Given I select the Account <acct>
-        And I select the Contact <contact>
-        And I assign an Opportunity <name>
-        When I click the cancel button
-        Then the form should close
-        And the opportunity should not exist in the db
+    Scenario Outline: AE cancels an opportunity
+        When I supply account=<acct>, contact=<contact>, name=<name>
+        And I cancel the opportunity creation
+        Then I should not have created an opportunity with name=<name>, account=<acct>, contact=<contact>
+        And the opportunity is not present in the db
+        And the form is cleared of previous values
 
         @Regression
         Examples:
-        |    acct    |    contact    |    name    |
-        |    todo    |    todo    |    todo    |
+        |  acct  |  contact |  name  |
+        |  ''    |  todo    |  todo  |
+        |  todo  |  ''      |  todo  |
+        |  todo  |  todo    |  ''    |
+        |  ''    |  ''      |  ''    |
+        |  todo  |  todo    |  todo  |
 
 
 
-    Scenario: The AE clicks the cancel X
+    Scenario: AE soft ("X" button) cancels an opportunity
+        When I supply account=<acct>, contact=<contact>, name=<name>
+        And I cancel the opportunity creation using the "X"
+        Then I should not have created an opportunity with name=<name>, account=<acct>, contact=<contact>
+        And the opportunity is not present in the db
+        And the form is cleared of previous values
 
-        Given I am on the create form
-        When I click the X
-        Then the form should close
+        @Regression
+        Examples:
+        |  acct  |  contact |  name  |
+        |  ''    |  todo    |  todo  |
+        |  todo  |  ''      |  todo  |
+        |  todo  |  todo    |  ''    |
+        |  ''    |  ''      |  ''    |
+        |  todo  |  todo    |  todo  |
 
-
-
-    Scenario: The AE selects an Account
-
-        Given I am on the create form
-        When I click account
-        Then the Account module should open
-        And I should be able to select an account
-        And the account should display on the form
-
-
-
-    Scenario: The AE selects a Contact
-
-        Given I am on the create form
-        When I click contact
-        Then the Contact module should open
-        And I should be able to select a contact
-        And the contact should display on the form
 

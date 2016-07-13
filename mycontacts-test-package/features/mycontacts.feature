@@ -7,23 +7,20 @@ Feature: My Contacts Smoke Test
     I want a quick My Contacts smoke test
 
     Background:
-        Given I am an Account Executive
-        And I am logged in
+        Given I am logged in
+        And I am an Account Executive
         And I am on My Contacts
 
     Scenario: I as an AE want to create a contact
-        When I click the "+New Contact" button
-        And complete the form
+        When I create a new contact
         Then the new contact should be visible
 
     Scenario: I as an AE want to edit a contact
-        When I select a contact
-        And edit the contacts information
-        Then the contact should update successfully
+        When I edit the contacts information
+        Then the contact should successfully update
 
     Scenario: I as an AE want to delete a contact
-        When I select a contact
-        And delete the contact
+        When I delete a contact
         Then the contact should be successfully removed
 
     Scenario: I as an AE want to favorite contacts

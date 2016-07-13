@@ -11,9 +11,7 @@ Feature: Opportunity Products
 
     Background:
         Given I am on the Visual Pipeline
-        And I opened an opportunity for edit
-        And I opened the product panel
-        And I clicked the edit product button
+        And I am adding a product to an opportunity
 
 
     # One happy path; One sad path

@@ -8,19 +8,16 @@ Feature: Edit Opportunity
 
     Background:
         Given I am on the Visual Pipeline
-        And I opened an opportunity for edit
+        And an opportunity is being edited
 
 
     # Opportunity detail fields are inline editable
     # Note: Need more info on expected behavior
     #       The feature lacks a save/update button
     #       when editing inline
-    Scenario: I want to edit a single detail inline
-
-        When I click <Field>
-        And enter the value <Entry>
-        And click away from the form
-        Then <Field> value should be updated to <Entry>
+    Scenario Outline: I as an AE want to edit a single detail inline
+        When I update the <Field> field to the value <Entry>
+        Then the <Field> field value should be updated to <Entry>
 
         Examples:
         |  Field               |    Entry    |
@@ -32,14 +29,44 @@ Feature: Edit Opportunity
 
 
     # Opportunity details can be edited "all at once"
-    Scenario: I want to edit multiple details at once
+    Scenario Outline: I as an AE want to edit multiple details at once
+        When I update the field values to <OppName>,<DecisionMaker>,<Steps>,<Stage>,<Close>
+        Then the field values should be updated to <OppName>,<DecisionMaker>,<Steps>,<Stage>,<Close>
 
-        When I click the edit pencil button
-        And enter opportunity name ""
-        And decision maker ""
-        And next steps ""
-        And sales stage ""
-        And expected close date ""
-        And click save
-        Then the field values should be updated
-        And the form remains open
+        Examples:
+        |  OppName  |  DecisionMaker  |  Steps  |  Stage  |  Close  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+
+    
+    # The AE wants to cancel the edit process and discard all changes
+    Scenario Outline: I as an AE want to cancel and discard inline changes
+        When I update the <Field> field to the value <Entry>
+        And discard the changes using the "X" button
+        Then the <Field> field value should not be updated to <Entry>
+
+        Examples:
+        |  Field               |    Entry    |
+        |  opportunity name    |    todo     |
+        |  decision maker      |    todo     |
+        |  next steps          |    todo     |
+        |  sales stage         |    todo     |
+        |  expected close date |    todo     |
+
+
+    # Opportunity details can be edited "all at once"
+    Scenario Outline: I as an AE want to cancel and discard all changes
+        When I update the field values to <OppName>,<DecisionMaker>,<Steps>,<Stage>,<Close>
+        And discard the changes using the "Cancel" button
+        Then the field values should be updated to <OppName>,<DecisionMaker>,<Steps>,<Stage>,<Close>
+
+        Examples:
+        |  OppName  |  DecisionMaker  |  Steps  |  Stage  |  Close  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |
+        |  ""               |  ""  |  ""  |  ""  |  ""  |

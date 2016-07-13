@@ -2,20 +2,56 @@
 
 Feature: Create Contact
 
-    Scenario Outline: The AE clicks the create button
+    Background:
+        Given I am logged in as an AE
+        And I am on the My Contacts screen
+        And I am creating a contact
+        When I supply First=<first>, Last=<last>, title=<title>, email=<email>
 
-        Given I selected an Account [acct]
-        And I entered the Contact [fname] [lname] [title] [email]
-        When I click the save button
-        Then the form should close
-        And the new contact should appear
+    Scenario Outline: The AE creates a new contact
+        # When I supply First=<first>, Last=<last>, title=<title>, email=<email>
+        Then I should have created an contact with First=<first>, Last=<last>, title=<title>, email=<email>
+        And the contact is present in the db
 
         # Five examples. Check for "Required" fields covered.
-        @Regression @Smoke
+        @Regression
         Examples:
-        |    fname    |    lname    |    title    |    email    |
-        |    ''    |    todo    |    todo    |    |
-        |    todo    |    ''    |    todo    |    |
-        |    todo    |    todo    |    ''    |    |
-        |    ''    |    ''    |    ''    |    |
-        |    todo    |    todo    |    todo    |    |
+        |  first |  last  |  title |  email |
+        |  ''    |  todo  |  todo  |  ""    |
+        |  todo  |  ''    |  todo  |  ""    |
+        |  ''    |  ''    |  ''    |  ""    |
+        |  todo  |  todo  |  todo  |  ""    |
+
+
+    Scenario Outline: The AE cancels a new contact
+        # When I supply First=<first>, Last=<last>, title=<title>, email=<email>
+        And I cancel the contact creation
+        Then I should have created an contact with First=<first>, Last=<last>, title=<title>, email=<email>
+        And the contact is not present in the db
+        And the form is cleared of previous values
+
+        # Five examples. Check for "Required" fields covered.
+        @Regression
+        Examples:
+        |  first |  last  |  title |  email |
+        |  ''    |  todo  |  todo  |  ""    |
+        |  todo  |  ''    |  todo  |  ""    |
+        |  ''    |  ''    |  ''    |  ""    |
+        |  todo  |  todo  |  todo  |  todo  |
+
+
+    Scenario Outline: The AE soft ("X" button) cancels a new contact
+        # When I supply First=<first>, Last=<last>, title=<title>, email=<email>
+        And I cancel the contact creation using the "X"
+        Then I should have created an contact with First=<first>, Last=<last>, title=<title>, email=<email>
+        And the contact is not present in the db
+        And the form is cleared of previous values
+
+        # Five examples. Check for "Required" fields covered.
+        @Regression
+        Examples:
+        |  first |  last  |  title |  email |
+        |  ''    |  todo  |  todo  |  ""    |
+        |  todo  |  ''    |  todo  |  ""    |
+        |  ''    |  ''    |  ''    |  ""    |
+        |  todo  |  todo  |  todo  |  todo  |
