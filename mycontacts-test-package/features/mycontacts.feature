@@ -35,5 +35,5 @@ Feature: My Contacts Smoke Test
         Then I should only see Seat Holders
 
     Scenario: I as an AE want to only view my favorites
-        When I click the "My Contacts"
+        When I click the "My Contacts" button
         Then I should only see My Contacts

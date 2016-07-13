@@ -35,27 +35,21 @@ Feature: Visual Pipeline Smoke Test
 
     ## Edit Opportunity Smoke
     Scenario: I as an AE want the option to edit an Opportunity
-        And opportunities exist
-        When I click the Account Name on the Opportunity
-        Then the edit form should open
-        And the edit form should save successfully after alteration
+        When I open an Opportunities detail view
+        And make an alteration
+        Then the opportunity should successfully update
 
     ## Create Opportunity Smoke
     Scenario: I as an AE want the option to create an Opportunity
         When I click "Create New Opportunity"
-        Then the create form should open
-        And the create form should save successfully
+        And create a new opportunity
+        Then the opoportunity should be successfully created
 
     ## Add a Product Smoke
     Scenario: I as an AE want to add a product to an Opportunity
-        And opportunities exist
-        When I click the Account Name on the Opportunity
-        And I click the "Product" tab
-        And I click the edit button
-        And I click the "Add a Product" button
-        And complete the product form
-        And click the "Save" button
-        Then the product should save successfully
+        When I open an Opportunities detail view
+        And view the Products tab
+        Then I should be able to successfully add a product
 
     Scenario: I as an AE want to soft delete an opportunity
         When I click the "X" button in the tiles top right corner
@@ -63,7 +57,5 @@ Feature: Visual Pipeline Smoke Test
 
 
     Scenario: I as an AE want to move an opportunity to another column
-        When I click and hold a tile
-        And drag the tile right
-        And release the tile
-        Then I should have updated the tiles location
+        When I drag and drop a tile to the next column over
+        Then I should have updated the opportunity

@@ -12,9 +12,8 @@ Feature: Homepage Smoke Test
         And I am on the homepage
 
     Scenario: I as an AE want to access Gartner Links
-        When I click on the Gartner Link drop down
-        And select a Gartner Link
-        Then I should be navigated to the Gartner Link
+        When I select a Gartner Link
+        Then I should be redirected to the link
 
     Scenario: I as an AE want to open the module menu
         When I click the stack icon
@@ -26,27 +25,23 @@ Feature: Homepage Smoke Test
         Then the menu should slide close
 
     Scenario: I as an AE want to close a recommended action
-        And I have more than five recommended actions
-        When I click the checkbox for an action
-        Then I should see the recommended action removed
-        And I should see another recommended action take its place
+        When I complete a recommended action
+        Then the recommended action should be removed from view
+        And the next pending action should be available for review
 
     Scenario: I as an AE want the option to edit an Opportunity
-        And opportunities exist
-        When I click edit opportunity
-        Then I should be taken to the Visual Pipeline
-        And the edit form should be open
+        When I edit an opportunity from the Homepage
+        Then I should be redirected to the Visual Pipeline
 
     Scenario: I as an AE want the option to create an Opportunity
-        When I click Create New Opportunity
-        Then a form should open
-        And the form should save successfully
+        When I create an opportunity from the homepage
+        Then the opportunity should be immediately available
 
     Scenario: I as an AE want to access the Visual Pipeline
-        When I click Visual Pipeline
-        Then I should be taken to the Visual Pipeline
+        When I click "Visual Pipeline"
+        Then I should be redirected to the Visual Pipeline
 
     Scenario: I as an AE want to access the My Contacts page
-        When I click Contacts
-        Then I should be taken to My Contacts
+        When I click "Contacts"
+        Then I should be redirected to My Contacts
 
