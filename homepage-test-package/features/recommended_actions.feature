@@ -26,6 +26,7 @@ Feature: Recommended actions
         Then I should not see the action in the list
         And a new action should not populate
 
+
     Scenario: I as an AE no recommended actions
         When I look at the recommended actions section
         Then I should see a "No Recommended Actions" message
