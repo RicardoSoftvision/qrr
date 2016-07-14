@@ -13,11 +13,11 @@ Feature: Filter the homepage list view to show records by stage
 
 
     Scenario Outline: I as an AE want to filter records by stage
-        When I activate the filter by <stage> stage
-        Then I should only see records of the stage <stage>
+        When I activate the filter by <Stage> stage
+        Then I should only see records of the stage <Stage>
 
         Examples:
-        |  stage       |
+        |  Stage       |
         |  A/Commit   |
         |  B/Develop  |
         |  C/Qualify  |
