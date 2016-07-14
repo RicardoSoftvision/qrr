@@ -1,4 +1,4 @@
-# /features/menu.feature
+# /features/nav_menu.feature
 
 Feature: Interact with the menu to navigate through the CRM
     The menu is a stack icon which slides opened
