@@ -11,8 +11,8 @@ Feature: Homepage Smoke Test
         And I am logged in
         And I am on the homepage
 
-    Scenario: I as an AE want to access Gartner Links
-        When I select a Gartner Link
+    Scenario: I as an AE want to access <redacted> Links
+        When I select a <redacted> Link
         Then I should be redirected to the link
 
     Scenario: I as an AE want to open the module menu
